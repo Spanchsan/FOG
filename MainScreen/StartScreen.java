@@ -156,9 +156,9 @@ public class StartScreen implements Screen {
         });
         stage.addActor(infoBtn);
         //Info button
-        multiBtn = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("info.png")))));
-        multiBtn.setSize(col_width * 1.5f, row_height * 1.5f);
-        multiBtn.setPosition(col_width * 6, screenHeight - row_height * 9.7f, Align.center);
+        multiBtn = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("multiplayer.png")))));
+        multiBtn.setSize(col_width * 2f, row_height * 2f);
+        multiBtn.setPosition(col_width * 6, screenHeight - row_height * 8f, Align.center);
         multiBtn.addListener(new InputListener(){
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {

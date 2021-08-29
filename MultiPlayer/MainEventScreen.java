@@ -4,21 +4,29 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Server;
 import com.mygdx.game.FOG;
+import com.mygdx.game.MainScreen.StartScreen;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.util.Enumeration;
 import java.util.List;
 
 public class MainEventScreen implements Screen {
@@ -37,6 +45,7 @@ public class MainEventScreen implements Screen {
 
     int counter = 0;
     TextButton servBtn, connectBtn;
+    ImageButton backBtn;
     Skin skin;
 
     public MainEventScreen(final FOG game){
@@ -76,9 +85,6 @@ public class MainEventScreen implements Screen {
             }
         });
         stage.addActor(servBtn);
-        try {
-            address = InetAddress.getLocalHost().getHostAddress();
-        } catch (Exception e){}
         connectBtn = new TextButton("Connect", skin);
         connectBtn.setSize((float)(row_height * 2), (float)(col_width * 2));
         connectBtn.setPosition(col_width * 6, row_height * 5, Align.center);
@@ -113,6 +119,45 @@ public class MainEventScreen implements Screen {
             }
         });
         stage.addActor(connectBtn);
+        //Back Button
+        backBtn = new ImageButton(skin);
+        Drawable backBtnBackground = backBtn.getBackground();
+        ImageButton.ImageButtonStyle backBtnStyle = new ImageButton.ImageButtonStyle();
+        backBtnStyle.imageUp = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("back.png"))));
+        backBtnStyle.imageDown = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("back.png"))));
+        backBtnStyle.up = backBtnBackground;
+        backBtnStyle.down = backBtnBackground;
+        backBtn.setStyle(backBtnStyle);
+        backBtn.setSize((float)(col_width * 1.4), (float)(row_height * 0.7));
+        backBtn.setPosition((float)(col_width * 0.2), (float)(row_height * 0.2));
+        backBtn.addListener(new InputListener(){
+            @Override
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+            }
+
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                game.setScreen(new StartScreen(game));
+                dispose();
+                return false;
+            }
+        });
+        stage.addActor(backBtn);
+        try {
+            Enumeration<NetworkInterface> n = NetworkInterface.getNetworkInterfaces();
+            for (; n.hasMoreElements(); ) {
+                NetworkInterface e = n.nextElement();
+                Enumeration<InetAddress> a = e.getInetAddresses();
+                for (; a.hasMoreElements(); ) {
+                    InetAddress addr = a.nextElement();
+                    String temp = addr.getHostAddress();
+                    if ((temp.charAt(0) >= '0' && temp.charAt(0) <= '9') && (temp.charAt(1) >= '6' && temp.charAt(1) <= '9')
+                            && (temp.charAt(2) >= '0' && temp.charAt(2) <= '9') && !(temp.equals("127.0.0.1"))) {
+                        address = addr.getHostAddress();
+                    }
+                }
+            }
+        } catch (Exception ex){}
     }
 
     @Override
