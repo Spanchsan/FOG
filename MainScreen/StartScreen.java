@@ -98,7 +98,7 @@ public class StartScreen implements Screen {
         pointLbl.setSize(col_width * 2, row_height * 1);
         pointLbl.setAlignment(Align.center);
         pointLbl.setPosition(screenWidth / 2 - col_width * 1, screenHeight - (float)(row_height * 4.5));
-        pointLbl.setFontScale(4 * ratW, 4 * ratH);
+        pointLbl.setFontScale(2 * ratW, 2 * ratH);
         stage.addActor(pointLbl);
         //Shop Button
         Drawable shopImg = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("upgradeshop.jpg"))));

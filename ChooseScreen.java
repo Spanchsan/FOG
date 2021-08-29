@@ -70,20 +70,20 @@ public class ChooseScreen implements Screen {
         chooseGM = new Label("Choose Game Mode", skin, "default");
         chooseGM.setPosition(0, screenHeight - row_height * 1);
         chooseGM.setSize(screenWidth, row_height * 1);
-        chooseGM.setFontScale(5 * ratW, 5 * ratH);
+        chooseGM.setFontScale(2.5f * ratW, 2.5f * ratH);
         chooseGM.setAlignment(Align.center);
         stage.addActor(chooseGM);
         //Choose difficulty Label
         chooseDif = new Label("Choose Difficulty", skin ,"default");
         chooseDif.setSize(screenWidth,row_height*1);
         chooseDif.setPosition(0,(float)(screenHeight-row_height * 2));
-        chooseDif.setFontScale(4 * ratW, 4 * ratH);
+        chooseDif.setFontScale(2 * ratW, 2 * ratH);
         chooseDif.setAlignment(Align.center);
         stage.addActor(chooseDif);
         //EASY,NORMAL, HARD SelectBox
         difficulties = new SelectBox(skinOptional, "default");
         difficulties.setSize(col_width * 6, (float)(row_height * 0.8));
-        difficulties.getStyle().listStyle.font.getData().setScale(3 * ratW, 3 * ratH);
+        difficulties.getStyle().listStyle.font.getData().setScale(1.9f * ratW, 1.9f * ratH);
         difficulties.setPosition(col_width * 3, screenHeight-row_height * 2.6f);
         difficulties.setAlignment(Align.center);
         difficulties.getList().setAlignment(Align.right);
@@ -194,22 +194,22 @@ public class ChooseScreen implements Screen {
         difNameLbl = new Label("GUN", skinOptional, "black");
         difNameLbl.setAlignment(Align.center);
         difNameLbl.setPosition(screenWidth / 2 - (float)(col_width * 0.5) , screenHeight - (float)(row_height * 4));
-        difNameLbl.setFontScale(5 * ratW, 5 * ratH);
+        difNameLbl.setFontScale(2.7f * ratW, 2.7f * ratH);
         difNameLbl.setSize(col_width, row_height);
         stage.addActor(difNameLbl);
         //Start Button
-            startBtn = new TextButton("START", skin, "colored" );
-            startBtn.getLabel().setFontScale(4 * ratW, 4 * ratH);
-            startBtn.setSize((float)(col_width * 5),(float)(row_height * 1.8));
-            startBtn.setPosition(screenWidth / 2 - (float)(col_width * 2.45), (float)(screenHeight - row_height * 7.7));
-            startBtn.addListener(new InputListener(){
-                @Override
-                public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+        startBtn = new TextButton("START", skin, "colored" );
+        startBtn.getLabel().setFontScale(2 * ratW, 2 * ratH);
+        startBtn.setSize((float)(col_width * 5),(float)(row_height * 1.8));
+        startBtn.setPosition(screenWidth / 2 - (float)(col_width * 2.45), (float)(screenHeight - row_height * 7.7));
+        startBtn.addListener(new InputListener(){
+            @Override
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 
-                }
+            }
 
-                @Override
-                public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                     if(selectedGameMode == 1){
                         if(selectedDifIndex == 0) {
                             game.setScreen(new GunEasy(game));

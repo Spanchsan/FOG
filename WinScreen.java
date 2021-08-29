@@ -75,7 +75,7 @@ public class WinScreen implements Screen {
         //Win Lbl
         Label textWinLbl = new Label("WIN", skinOptional, "black");
         textWinLbl.setSize(col_width * 1, row_height * 1);
-        textWinLbl.setFontScale(6 * ratW, 6 * ratH);
+        textWinLbl.setFontScale(3 * ratW, 3 * ratH);
         textWinLbl.setAlignment(Align.center);
         textWinLbl.setPosition(screenWidth - col_width * 6.5f, screenHeight - row_height * 1);
         stage.addActor(textWinLbl);
@@ -90,19 +90,19 @@ public class WinScreen implements Screen {
                     skinOptional, "black");
         }
         winLbl.setSize(col_width * 3, row_height * 3);
-        winLbl.setFontScale(4 * ratW, 4 * ratH);
+        winLbl.setFontScale(2 * ratW, 2 * ratH);
         winLbl.setPosition(screenWidth - col_width * 11, screenHeight - row_height * 4);
         stage.addActor(winLbl);
         //Score lbl
         scoreLbl = new Label("Your Game Score:\n      " + playerScore + "(+" + additionalPoints + ")", skinOptional, "black");
         scoreLbl.setSize(col_width * 2, row_height * 2);
-        scoreLbl.setFontScale(5 * ratW, 5 * ratH);
+        scoreLbl.setFontScale(2.5f * ratW, 2.5f * ratH);
         scoreLbl.setPosition(screenWidth - col_width * 11, screenHeight - row_height * 5);
         stage.addActor(scoreLbl);
         //Retry Button
         retryBtn = new TextButton("Retry", skin);
         retryBtn.setSize(col_width * 6, row_height * 2);
-        retryBtn.getLabel().setFontScale(6 * ratW, 6 * ratH);
+        retryBtn.getLabel().setFontScale(3 * ratW, 3 * ratH);
         retryBtn.getLabel().setColor(0,0,0,1);
         retryBtn.setPosition(screenWidth - col_width * 9, screenHeight - row_height * 6.8f);
         retryBtn.addListener(new InputListener(){
@@ -157,7 +157,7 @@ public class WinScreen implements Screen {
         backBtn.setSize(col_width * 6, row_height * 2);
         Label backBtnLabel = new Label("Back", skinOptional, "black");
         backBtn.getLabel().getStyle().font = backBtnLabel.getStyle().font;
-        backBtn.getLabel().setFontScale(6 * ratW, 6 * ratH);
+        backBtn.getLabel().setFontScale(3 * ratW, 3 * ratH);
         backBtn.getLabel().setColor(0,0,0,1);
         backBtn.setPosition(screenWidth - col_width * 9, screenHeight - row_height * 9);
         backBtn.addListener(new InputListener(){

@@ -165,7 +165,7 @@ public class ObjectEasy extends ApplicationAdapter implements Screen {
         //Time lbl
         timeLbl = new Label("Time remained:\n  " + (int)timer, skinOptional, "default");
         timeLbl.setSize(col_width * 2, row_height * 2);
-        timeLbl.setFontScale(4 * ratW, 4 * ratH);
+        timeLbl.setFontScale(2 * ratW, 2 * ratH);
         timeLbl.setAlignment(Align.center);
         timeLbl.setPosition(screenWidth - (float)(col_width * 7), screenHeight - (float)(row_height * 2.2));
         timeLbl.setColor(0,0,1,1);
@@ -174,7 +174,7 @@ public class ObjectEasy extends ApplicationAdapter implements Screen {
         scoreLbl = new Label("Your Score:\n  " + (int)points + "->"
                 + " Goal:" + goalPoint, skinOptional, "default");
         scoreLbl.setSize(col_width * 2, row_height * 2);
-        scoreLbl.setFontScale(4 * ratW, 4 * ratH);
+        scoreLbl.setFontScale(2 * ratW, 2 * ratH);
         scoreLbl.setAlignment(Align.center);
         scoreLbl.setPosition(screenWidth - (float)(col_width * 7), screenHeight - (float)(row_height * 3.2));
         scoreLbl.setColor(0,0,2,1);

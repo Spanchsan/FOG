@@ -22,6 +22,7 @@ import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Server;
 import com.mygdx.game.FOG;
 import com.mygdx.game.MainScreen.StartScreen;
+import com.mygdx.game.utils.PortScanner;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -42,6 +43,8 @@ public class MainEventScreen implements Screen {
     float ratW, ratH;
     String address;
     List<InetAddress> hosts;
+    InetAddress host;
+    String hostS;
 
     int counter = 0;
     TextButton servBtn, connectBtn;
@@ -60,13 +63,13 @@ public class MainEventScreen implements Screen {
         stage = new Stage(new ScreenViewport());
         skin = new Skin(Gdx.files.internal("skinHolo/uiskin.json"));
         Gdx.input.setInputProcessor(stage);
-        game.getFont().getData().setScale(4 * ratW, 4 * ratH);
-        game.getFont().setColor(1,0,0,1);
+        game.getFont().getData().setScale(2 * ratW, 2 * ratH);
+        //game.getFont().setColor(1,0,0,1);
 
         servBtn = new TextButton("Create a server", skin);
         servBtn.setSize((float)(row_height * 2), (float)(col_width * 2));
         servBtn.setPosition(col_width * 6, row_height * 8, Align.center);
-        servBtn.getLabel().setFontScale(5 * ratW, 5 * ratH);
+        servBtn.getLabel().setFontScale(2.5f * ratW, 2.5f * ratH);
         servBtn.addListener(new InputListener(){
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -88,7 +91,7 @@ public class MainEventScreen implements Screen {
         connectBtn = new TextButton("Connect", skin);
         connectBtn.setSize((float)(row_height * 2), (float)(col_width * 2));
         connectBtn.setPosition(col_width * 6, row_height * 5, Align.center);
-        connectBtn.getLabel().setFontScale(5 * ratW, 5 * ratH);
+        connectBtn.getLabel().setFontScale(2.5f * ratW, 2.5f * ratH);
         connectBtn.addListener(new InputListener(){
             String host;
             @Override
@@ -106,9 +109,9 @@ public class MainEventScreen implements Screen {
 
                     @Override
                     public void canceled() {
-
+                        game.setScreen(new MainEventScreen(game));
                     }
-                }, "Input Ip", "127.0.0.1", "Ip Server");
+                }, "Input Ip", "", "Server Local IP");
                 dispose();
                 return false;
             }
@@ -158,6 +161,20 @@ public class MainEventScreen implements Screen {
                 }
             }
         } catch (Exception ex){}
+        hostS = "";
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                hosts = PortScanner.scanPortForServers();
+                //host = PortScanner.scanPortForSingleServer();
+                for(InetAddress addr: hosts ){
+                    if(addr.getHostAddress().isEmpty()) break;
+                    hostS += addr.getHostAddress() + "\n";
+                }
+            }
+        };
+        Thread thread = new Thread(runnable);
+        thread.start();
     }
 
     @Override
@@ -173,11 +190,10 @@ public class MainEventScreen implements Screen {
         stage.act();
         stage.draw();
         game.getFont().draw(game.getBatch(), "Your Ip:" + address, col_width * 4, row_height * 11);
-        /*for(InetAddress addr: hosts ){
-            game.getFont().draw(game.getBatch(), "Available" + addr.getHostAddress(),
+        game.getFont().draw(game.getBatch(), "Available:\n" + hostS,
                     col_width * 4, row_height * 10 - row_height * 0.5f * counter);
-            counter++;
-        }*/
+        /*game.getFont().draw(game.getBatch(), "Available: " + host.getHostAddress(),
+                col_width * 3.5f, row_height * 10 - row_height * 0.5f * counter);*/
         game.getBatch().end();
     }
 

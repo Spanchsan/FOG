@@ -135,14 +135,14 @@ public class InfoScreen implements Screen {
         stage.addActor(homeBtn);
         //Game Mode Label
         GMLbl = new Label("Gun", skin);
-        GMLbl.setFontScale(5 * ratW, 5 * ratH);
+        GMLbl.setFontScale(2.5f * ratW, 2.5f * ratH);
         GMLbl.setAlignment(Align.center);
         GMLbl.setSize(col_width, row_height);
         GMLbl.setPosition(col_width * 5.5f, screenHeight - row_height * 2.5f);
         stage.addActor(GMLbl);
         //Description of game mode Label
         textLbl = new Label("", skin);
-        textLbl.setFontScale(2.8f * ratW, 2.8f * ratH);
+        textLbl.setFontScale(1.3f * ratW, 1.3f * ratH);
         textLbl.setAlignment(Align.top);
         textLbl.setSize(col_width * 12, textLbl.getPrefHeight());
         textLbl.setPosition(col_width * 0.1f, screenHeight - row_height * 3.6f);
@@ -172,7 +172,7 @@ public class InfoScreen implements Screen {
                     "GOOD LUCK!");
         } else {
             GMLbl.setText("FIND");
-            textLbl.setText("Find is game mode about \nfinding Nexus and saving information from it\n" +
+            textLbl.setText("Find is game mode about \nfinding Nexus\nSaving information from it\n" +
                      "There is text that shows range \nfor the Nexus from your position\n" +
                             "In Easy, Normal, Hard difficulties\n Different time and goal\n" +
                     "GOOD LUCK!");

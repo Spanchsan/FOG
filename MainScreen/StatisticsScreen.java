@@ -158,7 +158,7 @@ public class StatisticsScreen implements Screen {
 
         firstLbl = new Label("Destroyed:" + enemyDestroyed, skin);
         firstLbl.setSize(col_width * 2, row_height * 1);
-        firstLbl.setFontScale(3 * ratW, 3 * ratH);
+        firstLbl.setFontScale(1.5f * ratW, 1.5f * ratH);
         firstLbl.setPosition(col_width * 5f, screenHeight - row_height * 6, Align.center);
         stage.addActor(firstImg);
         stage.addActor(firstLbl);

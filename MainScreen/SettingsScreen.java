@@ -63,19 +63,19 @@ public class SettingsScreen implements Screen {
         settingsLbl = new Label("Settings", skin);
         settingsLbl.setPosition(col_width * 4, row_height * 10.5f, Align.center);
         settingsLbl.setSize(col_width * 4, row_height * 2);
-        settingsLbl.setFontScale(5 * ratW, 5 * ratH);
+        settingsLbl.setFontScale(2.5f * ratW, 2.5f * ratH);
         stage.addActor(settingsLbl);
         //Name Label
         nameLbl = new Label("Your name:" + name, skin);
         nameLbl.setPosition(col_width * 4, row_height * 8.5f);
         nameLbl.setSize(col_width * 4, row_height * 2);
-        nameLbl.setFontScale(3 * ratW, 3 * ratH);
+        nameLbl.setFontScale(1.5f * ratW, 1.5f * ratH);
         stage.addActor(nameLbl);
         //Change name button
         changeNameBtn = new TextButton("Change Name", skin);
         changeNameBtn.setPosition(col_width * 4, row_height * 7);
         changeNameBtn.setSize(col_width * 4, row_height * 2);
-        changeNameBtn.getLabel().setFontScale(3 * ratW, 3 * ratH);
+        changeNameBtn.getLabel().setFontScale(1.5f * ratW, 1.5f * ratH);
         changeNameBtn.addListener(new InputListener(){
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -128,6 +128,7 @@ public class SettingsScreen implements Screen {
                 OnDataLoaderListener listener = new OnDataLoaderListener() {
                     @Override
                     public void getData(Array<User> players) {
+                        if(players != null)
                         for(int i =0; i < players.size; i++){
                             if(players.get(i).getName().equals(oldName)){
                                 players.get(i).setName(name);

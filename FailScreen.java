@@ -71,13 +71,13 @@ public class FailScreen implements Screen {
         //Score lbl
         scoreLbl = new Label("You Failed\nYour Score:\n      " + playerScore, skinOptional, "black");
         scoreLbl.setSize(col_width * 2, row_height * 2);
-        scoreLbl.setFontScale(6 * ratW, 6 * ratH);
+        scoreLbl.setFontScale(3 * ratW, 3 * ratH);
         scoreLbl.setPosition(screenWidth - col_width * 9, screenHeight - row_height * 3);
         stage.addActor(scoreLbl);
         //Retry Button
         retryBtn = new TextButton("Retry", skin);
         retryBtn.setSize(col_width * 6, row_height * 2);
-        retryBtn.getLabel().setFontScale(6 * ratW, 6 * ratH);
+        retryBtn.getLabel().setFontScale(3 * ratW, 3 * ratH);
         retryBtn.getLabel().setColor(0,0,0,1);
         retryBtn.setPosition(screenWidth - col_width * 9, screenHeight - row_height * 6.8f);
         retryBtn.addListener(new InputListener(){
@@ -132,7 +132,7 @@ public class FailScreen implements Screen {
         backBtn.setSize(col_width * 6, row_height * 2);
         Label backBtnLabel = new Label("Back", skinOptional, "black");
         backBtn.getLabel().getStyle().font = backBtnLabel.getStyle().font;
-        backBtn.getLabel().setFontScale(6 * ratW, 6 * ratH);
+        backBtn.getLabel().setFontScale(3 * ratW, 3 * ratH);
         backBtn.getLabel().setColor(0,0,0,1);
         backBtn.setPosition(screenWidth - col_width * 9, screenHeight - row_height * 9);
         backBtn.addListener(new InputListener(){

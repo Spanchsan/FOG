@@ -81,9 +81,9 @@ public class ShopScreen implements Screen {
         //Dialog Screen
         dialogInfo.getContentTable().defaults().width(col_width * 10);
         dialogInfo.getContentTable().setPosition(col_width, row_height * 3);
-        dialogInfo.getTitleLabel().setFontScale(4 * ratW, 4 * ratH);
+        dialogInfo.getTitleLabel().setFontScale(2 * ratW, 2 * ratH);
         dialogLbl = new Label("Default", skin);
-        dialogLbl.setFontScale(2.8f * ratW, 2.8f * ratH);
+        dialogLbl.setFontScale(1.4f * ratW, 1.4f * ratH);
         dialogInfo.getContentTable().defaults().align(Align.left);
         dialogInfo.text(dialogLbl);
 
@@ -136,7 +136,7 @@ public class ShopScreen implements Screen {
                     buttonUpgrade.setText("MAX");
                 }
                 buttonUpgrade.setSize(col_width * 1.5f, row_height * 1.5f);
-                buttonUpgrade.getLabel().setFontScale(3 * ratW, 3 * ratH);
+                buttonUpgrade.getLabel().setFontScale(1.5f * ratW, 1.5f * ratH);
                 buttonUpgrade.addListener(new InputListener(){
                     @Override
                     public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -169,7 +169,7 @@ public class ShopScreen implements Screen {
 
                TextButton buttonCancel = new TextButton("Cancel", skin);
                buttonCancel.setSize(col_width * 1.5f, row_height * 1.5f);
-               buttonCancel.getLabel().setFontScale(3 * ratW, 3 * ratH);
+               buttonCancel.getLabel().setFontScale(1.5f * ratW, 1.5f * ratH);
                buttonCancel.addListener(new InputListener(){
                    @Override
                    public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -191,7 +191,7 @@ public class ShopScreen implements Screen {
         } else {
             hpCostLbl = new Label("MAX", skinOptional, "black");
         }
-        hpCostLbl.setFontScale(2.7f * ratW, 2.7f * ratH);
+        hpCostLbl.setFontScale(1.35f * ratW, 1.35f * ratH);
         hpCostLbl.setSize(col_width * 4, row_height * 2);
         hpCostLbl.setPosition((float)(col_width * 2), (float)(screenHeight - row_height * 5.65));
         stage.addActor(hpCostLbl);
@@ -240,7 +240,7 @@ public class ShopScreen implements Screen {
                     buttonUpgrade.setText("MAX");
                 }
                 buttonUpgrade.setSize(col_width * 1.5f, row_height * 1.5f);
-                buttonUpgrade.getLabel().setFontScale(3 * ratW, 3 * ratH);
+                buttonUpgrade.getLabel().setFontScale(1.5f * ratW, 1.5f * ratH);
                 buttonUpgrade.addListener(new InputListener(){
                     @Override
                     public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -273,7 +273,7 @@ public class ShopScreen implements Screen {
 
                 TextButton buttonCancel = new TextButton("Cancel", skin);
                 buttonCancel.setSize(col_width * 1.5f, row_height * 1.5f);
-                buttonCancel.getLabel().setFontScale(3 * ratW, 3 * ratH);
+                buttonCancel.getLabel().setFontScale(1.5f * ratW, 1.5f * ratH);
                 buttonCancel.addListener(new InputListener(){
                     @Override
                     public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -294,7 +294,7 @@ public class ShopScreen implements Screen {
         }else {
             bulletCostLbl = new Label("MAX", skinOptional, "black");
         }
-        bulletCostLbl.setFontScale(2.7f * ratW, 2.7f * ratH);
+        bulletCostLbl.setFontScale(1.35f * ratW, 1.35f * ratH);
         bulletCostLbl.setSize(col_width * 4, row_height * 2);
         bulletCostLbl.setPosition((float)(screenWidth - col_width * 3.8), (float)(screenHeight - row_height * 5.65));
         stage.addActor(bulletCostLbl);
@@ -343,7 +343,7 @@ public class ShopScreen implements Screen {
                     buttonUpgrade.setText("MAX");
                 }
                 buttonUpgrade.setSize(col_width * 1.5f, row_height * 1.5f);
-                buttonUpgrade.getLabel().setFontScale(3 * ratW, 3 * ratH);
+                buttonUpgrade.getLabel().setFontScale(1.5f * ratW, 1.5f * ratH);
                 buttonUpgrade.addListener(new InputListener(){
                     @Override
                     public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -376,7 +376,7 @@ public class ShopScreen implements Screen {
 
                 TextButton buttonCancel = new TextButton("Cancel", skin);
                 buttonCancel.setSize(col_width * 1.5f, row_height * 1.5f);
-                buttonCancel.getLabel().setFontScale(3 * ratW, 3 * ratH);
+                buttonCancel.getLabel().setFontScale(1.5f * ratW, 1.5f * ratH);
                 buttonCancel.addListener(new InputListener(){
                     @Override
                     public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -398,7 +398,7 @@ public class ShopScreen implements Screen {
         }else {
             drillCostLbl = new Label("MAX", skinOptional, "black");
         }
-        drillCostLbl.setFontScale(2.7f * ratW, 2.7f * ratH);
+        drillCostLbl.setFontScale(1.35f * ratW, 1.35f * ratH);
         drillCostLbl.setSize(col_width * 4, row_height * 2);
         drillCostLbl.setPosition((float)(col_width * 2), (float)(screenHeight - row_height * 8.25));
         stage.addActor(drillCostLbl);
@@ -447,7 +447,7 @@ public class ShopScreen implements Screen {
                     buttonUpgrade.setText("MAX");
                 }
                 buttonUpgrade.setSize(col_width * 1.5f, row_height * 1.5f);
-                buttonUpgrade.getLabel().setFontScale(3 * ratW, 3 * ratH);
+                buttonUpgrade.getLabel().setFontScale(1.5f * ratW, 1.5f * ratH);
                 buttonUpgrade.addListener(new InputListener(){
                     @Override
                     public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -480,7 +480,7 @@ public class ShopScreen implements Screen {
 
                 TextButton buttonCancel = new TextButton("Cancel", skin);
                 buttonCancel.setSize(col_width * 1.5f, row_height * 1.5f);
-                buttonCancel.getLabel().setFontScale(3 * ratW, 3 * ratH);
+                buttonCancel.getLabel().setFontScale(1.5f * ratW, 1.5f * ratH);
                 buttonCancel.addListener(new InputListener(){
                     @Override
                     public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -502,13 +502,13 @@ public class ShopScreen implements Screen {
         }else {
             lootCostLbl = new Label("MAX", skinOptional, "black");
         }
-        lootCostLbl.setFontScale(2.7f * ratW, 2.7f * ratH);
+        lootCostLbl.setFontScale(1.35f * ratW, 1.35f * ratH);
         lootCostLbl.setSize(col_width * 4, row_height * 2);
         lootCostLbl.setPosition((float)(screenWidth - col_width * 3.8), (float)(screenHeight - row_height * 8.25));
         stage.addActor(lootCostLbl);
         //Your points Label
         pointsLbl = new Label("Your points:" + points, skinOptional, "black");
-        pointsLbl.setFontScale(4 * ratW, 4 * ratH);
+        pointsLbl.setFontScale(2 * ratW, 2 * ratH);
         pointsLbl.setSize(col_width * 2, pointsLbl.getPrefHeight());
         pointsLbl.setPosition(screenWidth / 2 - col_width * 2, screenHeight - row_height * 2, Align.center);
         stage.addActor(pointsLbl);

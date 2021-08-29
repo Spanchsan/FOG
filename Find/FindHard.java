@@ -140,7 +140,7 @@ public class FindHard extends ApplicationAdapter implements Screen {
         //Time lbl
         timeLbl = new Label("Time remained:\n  " + (int)timer, skinOptional, "default");
         timeLbl.setSize(col_width * 2, row_height * 2);
-        timeLbl.setFontScale(4 * ratW,  4 * ratH);
+        timeLbl.setFontScale(2 * ratW,  2 * ratH);
         timeLbl.setAlignment(Align.center);
         timeLbl.setPosition(screenWidth - (float)(col_width * 7), screenHeight - (float)(row_height * 2.2));
         timeLbl.setColor(1,0,0,1);
@@ -148,7 +148,7 @@ public class FindHard extends ApplicationAdapter implements Screen {
         //Score lbl
         scoreLbl = new Label(" Goal to save info:\n" + (int) looted + "/" + goalLoot, skinOptional, "default");
         scoreLbl.setSize(col_width * 2, row_height * 2);
-        scoreLbl.setFontScale(4 * ratW, 4 * ratH);
+        scoreLbl.setFontScale(2 * ratW, 2 * ratH);
         scoreLbl.setAlignment(Align.center);
         scoreLbl.setPosition(screenWidth - (float)(col_width * 7), screenHeight - (float)(row_height * 3.2));
         scoreLbl.setColor(1,0,0,1);
@@ -156,7 +156,7 @@ public class FindHard extends ApplicationAdapter implements Screen {
         // Range Label
         rangeLbl = new Label("Range to target:" + range, skinOptional, "default");
         rangeLbl.setSize(col_width * 2, row_height * 2);
-        rangeLbl.setFontScale(3 * ratW, 3 * ratH);
+        rangeLbl.setFontScale(1.5f * ratW, 1.5f * ratH);
         rangeLbl.setAlignment(Align.center);
         rangeLbl.setPosition(screenWidth - col_width * 6.8f, row_height * 2.8f);
         rangeLbl.setColor(1, 0 , 0, 1);

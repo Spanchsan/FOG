@@ -272,7 +272,7 @@ public class ClientPlayer implements Screen {
         stage.addActor(PBReload);
         //HP lbl
         HpLbl = new Label("YOUR HP", skinOptional, "black");
-        HpLbl.setFontScale(3 * ratH);
+        HpLbl.setFontScale(1.5f * ratW, 1.5f * ratH);
         HpLbl.setSize(col_width, row_height);
         HpLbl.setPosition((float)(col_width * 0.8), screenHeight - (float)(row_height * 1.7));
         HpLbl.setColor(1, 0 , 0, 1);
@@ -286,7 +286,7 @@ public class ClientPlayer implements Screen {
         stage.addActor(PBHPPlayer);
         //Enemy HP lbl
         EnemyHpLbl = new Label("ENEMY HP", skinOptional, "black");
-        EnemyHpLbl.setFontScale(3 * ratW, 3 * ratH);
+        EnemyHpLbl.setFontScale(1.5f * ratW, 1.5f * ratH);
         EnemyHpLbl.setSize(col_width, row_height);
         EnemyHpLbl.setPosition(screenWidth - (float)(col_width * 5.3), screenHeight - (float)(row_height * 1.7));
         EnemyHpLbl.setColor(0, 0 , 1, 1);
@@ -333,7 +333,7 @@ public class ClientPlayer implements Screen {
         mainMenuBtn.setSize(col_width * 6, row_height * 2);
         Label backBtnLabel = new Label("Back", skinOptional, "black");
         mainMenuBtn.getLabel().getStyle().font = backBtnLabel.getStyle().font;
-        mainMenuBtn.getLabel().setFontScale(6 * ratW, 6 * ratH);
+        mainMenuBtn.getLabel().setFontScale(3 * ratW, 3 * ratH);
         mainMenuBtn.getLabel().setColor(0,0,0,1);
         mainMenuBtn.setPosition(screenWidth - col_width * 9, screenHeight - row_height * 9);
         mainMenuBtn.setVisible(false);
@@ -354,7 +354,7 @@ public class ClientPlayer implements Screen {
         //Score lbl
         winLbl = new Label("You Lost, Try Again!", skinOptional, "black");
         winLbl.setSize(col_width * 2, row_height * 2);
-        winLbl.setFontScale(4 * ratW, 4 * ratH);
+        winLbl.setFontScale(2 * ratW, 2 * ratH);
         winLbl.setPosition(screenWidth - col_width * 9, screenHeight - row_height * 3);
         winLbl.setVisible(false);
         stage.addActor(winLbl);

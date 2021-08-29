@@ -204,14 +204,14 @@ public class GunHard extends ApplicationAdapter implements Screen {
             //Score lbl
             scoreLbl = new Label("Your Score:\n  " + scorePlayer, skinOptional, "default");
             scoreLbl.setSize(col_width * 2, row_height * 2);
-            scoreLbl.setFontScale(4 * ratW, 4 * ratH);
+            scoreLbl.setFontScale(2 * ratW, 2 * ratH);
             scoreLbl.setAlignment(Align.center);
             scoreLbl.setPosition(screenWidth - (float)(col_width * 7), screenHeight - (float)(row_height * 3));
             scoreLbl.setColor(1,0,0,1);
             stage.addActor(scoreLbl);
             //HP lbl
             HpLbl = new Label("YOUR HP", skinOptional, "black");
-            HpLbl.setFontScale(3 * ratW, 3 * ratH);
+            HpLbl.setFontScale(1.5f * ratW, 1.5f * ratH);
             HpLbl.setSize(col_width, row_height);
             HpLbl.setPosition(screenWidth - (float)(col_width * 5.3), screenHeight - (float)(row_height * 1.7));
             HpLbl.setColor(1, 0 , 0, 1);
@@ -224,7 +224,7 @@ public class GunHard extends ApplicationAdapter implements Screen {
             stage.addActor(PBHPBoss);
             //Boss HP lbl
             BossHpLbl = new Label("BOSS HP", skinOptional, "black");
-            BossHpLbl.setFontScale(3 * ratW, 3 * ratH);
+            BossHpLbl.setFontScale(1.5f * ratW, 1.5f * ratH);
             BossHpLbl.setSize(col_width, row_height);
             BossHpLbl.setPosition((float)(col_width * 0.8), screenHeight - (float)(row_height * 1.7));
             BossHpLbl.setColor(1, 0 , 0, 1);

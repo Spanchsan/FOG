@@ -130,7 +130,7 @@ public class ServerPlayer implements Screen{
                         update.hp = player.hp;
                         server.sendToAllTCP(update);
                         plAv = false;
-                        game.getFont().getData().setScale(3 * ratW, 3 * ratH);
+                        game.getFont().getData().setScale(1.5f * ratW, 1.5f * ratH);
                         joystick.setVisible(false);
                         PBReload.setVisible(false);
                         PBHPEnemy.setVisible(false);
@@ -151,7 +151,7 @@ public class ServerPlayer implements Screen{
 
                 if(object instanceof  Network.RoundLost){
                     plAv = false;
-                    game.getFont().getData().setScale(5 * ratW, 5 * ratH);
+                    game.getFont().getData().setScale(2 * ratW, 2 * ratH);
                     joystick.setVisible(false);
                     PBReload.setVisible(false);
                     PBHPEnemy.setVisible(false);
@@ -180,7 +180,7 @@ public class ServerPlayer implements Screen{
                     HpLbl.setVisible(true);
                     EnemyHpLbl.setVisible(true);
                     shootButton.setVisible(true);
-                    game.getFont().getData().setScale(3 * ratW, 3 * ratH);
+                    game.getFont().getData().setScale(1.5f * ratW, 1.5f * ratH);
 
                     return;
                 }
@@ -198,7 +198,7 @@ public class ServerPlayer implements Screen{
                 HpLbl.setVisible(true);
                 EnemyHpLbl.setVisible(true);
                 shootButton.setVisible(true);
-                game.getFont().getData().setScale(3 * ratW, 3 * ratH);
+                game.getFont().getData().setScale(1.5f * ratW, 1.5f * ratH);
                 player.playerX = (float)screenWidth / 2;
                 player.playerY = (float)screenHeight / 2;
             }
@@ -206,7 +206,7 @@ public class ServerPlayer implements Screen{
             @Override
             public void disconnected(Connection connection) {
                 plAv = false;
-                game.getFont().getData().setScale(5 * ratW, 5 * ratH);
+                game.getFont().getData().setScale(2 * ratW, 2 * ratH);
                 joystick.setVisible(false);
                 PBReload.setVisible(false);
                 PBHPEnemy.setVisible(false);
@@ -235,7 +235,7 @@ public class ServerPlayer implements Screen{
         skin = new Skin(Gdx.files.internal("skinHolo/uiskin.json"));
         skinOptional = new Skin(Gdx.files.internal("skin/glassy-ui.json"));
         Gdx.input.setInputProcessor(stage);
-        game.getFont().getData().setScale(5 * ratW, 5 * ratH);
+        game.getFont().getData().setScale(2 * ratW, 2 * ratH);
         playerB = new ArrayList<>();
         enemyB = new ArrayList<>();
         plRatB = new ArrayList<>();
@@ -341,7 +341,7 @@ public class ServerPlayer implements Screen{
                 HpLbl.setVisible(true);
                 EnemyHpLbl.setVisible(true);
                 shootButton.setVisible(true);
-                game.getFont().getData().setScale(3 * ratW, 3 * ratH);
+                game.getFont().getData().setScale(1.5f * ratW, 1.5f * ratH);
                 player.hp = 100;
                 player.playerX = screenWidth / 2;
                 player.playerY = screenHeight / 2;

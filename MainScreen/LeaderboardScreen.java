@@ -55,8 +55,8 @@ public class LeaderboardScreen implements Screen {
         ratH = (float)screenHeight / 1920;
         row_height = Gdx.graphics.getHeight() / 12;
         col_width = Gdx.graphics.getWidth() / 12;
-        game.getFont().getData().setScale(4 * ratW, 4 * ratH);
-        game.getFont().setColor(0,0,0,1);
+        game.getFont().getData().setScale(2 * ratW, 2 * ratH);
+        //game.getFont().setColor(0,0,0,1);
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
         skin = new Skin(Gdx.files.internal("skinHolo/uiskin.json"));
@@ -143,7 +143,7 @@ public class LeaderboardScreen implements Screen {
         titleLbl = new Label("Gun Points", skin);
         titleLbl.setPosition(col_width * 5, screenHeight - row_height, Align.center);
         titleLbl.setSize(col_width * 2, row_height);
-        titleLbl.setFontScale(4 * ratW, 4 * ratH);
+        titleLbl.setFontScale(2 * ratW, 2 * ratH);
         stage.addActor(titleLbl);
         //rightImageBtn
         rightBtn = new ImageButton(skin, "colored");
