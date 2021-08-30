@@ -47,6 +47,9 @@ public class ServerPlayer implements Screen{
     int screenHeight, screenWidth;
     Rectangle playerR, anotherR;
 
+    Runnable runUp;
+    Thread thrUp;
+
     Texture animationPic;
     TextureRegion[] planeAnimationFrames;
     Animation<TextureRegion> planeAnimation;
@@ -216,6 +219,7 @@ public class ServerPlayer implements Screen{
                 shootButton.setVisible(false);
                 retryBtn.setVisible(false);
                 mainMenuBtn.setVisible(false);
+                winLbl.setVisible(false);
                 roundLost = false;
 
             }
@@ -252,6 +256,7 @@ public class ServerPlayer implements Screen{
         temp = new PBullet();
         allRec = new Rectangle();
         allRec.set(0,0,screenWidth,screenHeight);
+
         //Shoot button
         shootButton = new ImageButton(skin, "colored");
         Drawable shootButtonBackground = shootButton.getBackground();
@@ -286,7 +291,7 @@ public class ServerPlayer implements Screen{
         stage.addActor(PBReload);
         //HP lbl
         HpLbl = new Label("YOUR HP", skinOptional, "black");
-        HpLbl.setFontScale(3 * ratH);
+        HpLbl.setFontScale(1.5f * ratW, 1.5f * ratH);
         HpLbl.setSize(col_width, row_height);
         HpLbl.setPosition((float)(col_width * 0.8), screenHeight - (float)(row_height * 1.7));
         HpLbl.setColor(1, 0 , 0, 1);
@@ -302,7 +307,7 @@ public class ServerPlayer implements Screen{
         stage.addActor(PBHPPlayer);
         //Enemy HP lbl
         EnemyHpLbl = new Label("ENEMY HP", skinOptional, "black");
-        EnemyHpLbl.setFontScale(3 * ratW, 3 * ratH);
+        EnemyHpLbl.setFontScale(1.5f * ratW, 1.5f * ratH);
         EnemyHpLbl.setSize(col_width, row_height);
         EnemyHpLbl.setPosition(screenWidth - (float)(col_width * 5.3), screenHeight - (float)(row_height * 1.7));
         EnemyHpLbl.setColor(0, 0 , 1, 1);
@@ -318,7 +323,7 @@ public class ServerPlayer implements Screen{
         //Retry Button
         retryBtn = new TextButton("Retry", skin);
         retryBtn.setSize(col_width * 6, row_height * 2);
-        retryBtn.getLabel().setFontScale(6 * ratW, 6 * ratH);
+        retryBtn.getLabel().setFontScale(3 * ratW, 3 * ratH);
         retryBtn.getLabel().setColor(0,0,0,1);
         retryBtn.setPosition(screenWidth - col_width * 9, screenHeight - row_height * 6.8f);
         retryBtn.setVisible(false);
@@ -355,7 +360,7 @@ public class ServerPlayer implements Screen{
         mainMenuBtn.setSize(col_width * 6, row_height * 2);
         Label backBtnLabel = new Label("Back", skinOptional, "black");
         mainMenuBtn.getLabel().getStyle().font = backBtnLabel.getStyle().font;
-        mainMenuBtn.getLabel().setFontScale(6 * ratW, 6 * ratH);
+        mainMenuBtn.getLabel().setFontScale(3 * ratW, 3 * ratH);
         mainMenuBtn.getLabel().setColor(0,0,0,1);
         mainMenuBtn.setPosition(screenWidth - col_width * 9, screenHeight - row_height * 9);
         mainMenuBtn.setVisible(false);
@@ -376,7 +381,7 @@ public class ServerPlayer implements Screen{
         //Score lbl
         winLbl = new Label("You Lost, Try Again!", skinOptional, "black");
         winLbl.setSize(col_width * 2, row_height * 2);
-        winLbl.setFontScale(4 * ratW, 4 * ratH);
+        winLbl.setFontScale(2 * ratW, 2 * ratH);
         winLbl.setPosition(screenWidth - col_width * 9, screenHeight - row_height * 3);
         winLbl.setVisible(false);
         stage.addActor(winLbl);
@@ -413,6 +418,19 @@ public class ServerPlayer implements Screen{
         update = new Network.UpdatePlayer();
         updateB = new Network.BulletPositions();
         updateD = new Network.EnemyDamaged();
+        runUp = new Runnable() {
+            @Override
+            public void run() {
+                update.posX = player.playerX / screenWidth;
+                update.posY = player.playerY / screenHeight;
+                update.angle = player.angle;
+                update.hp = player.hp;
+                server.sendToAllUDP(update);
+                updateB.bullets = plRatB;
+                server.sendToAllUDP(updateB);
+            }
+        };
+        thrUp = new Thread(runUp);
         Enumeration<NetworkInterface> n = NetworkInterface.getNetworkInterfaces();
         for (; n.hasMoreElements();) {
             NetworkInterface e = n.nextElement();
@@ -530,13 +548,15 @@ public class ServerPlayer implements Screen{
                         r.getWidth() / 2, r.getHeight()/ 2,
                         r.getWidth(), r.getHeight(),1, 1, (float)Math.toDegrees(r.getAngle()));
             }
-            update.posX = player.playerX / screenWidth;
+            /*update.posX = player.playerX / screenWidth;
             update.posY = player.playerY / screenHeight;
             update.angle = player.angle;
             update.hp = player.hp;
             server.sendToAllUDP(update);
             updateB.bullets = plRatB;
-            server.sendToAllUDP(updateB);
+            server.sendToAllUDP(updateB);*/
+            if(!thrUp.isAlive())
+            thrUp.run();
 
         } else {
             if(!roundLost)

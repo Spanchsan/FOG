@@ -46,6 +46,9 @@ public class ClientPlayer implements Screen {
     Rectangle playerR, anotherR;
     PBullet temp;
 
+    Runnable runUp;
+    Thread thrUp;
+
     Player player, enemy;
 
     float ratW, ratH;
@@ -148,7 +151,7 @@ public class ClientPlayer implements Screen {
                     player.hp -= 10;
                     if(player.hp <= 0){
                         plAv = false;
-                        game.getFont().getData().setScale(5 * ratW, 5 * ratH);
+                        game.getFont().getData().setScale(2.5f * ratW, 2.5f * ratH);
                         joystick.setVisible(false);
                         PBReload.setVisible(false);
                         PBHPEnemy.setVisible(false);
@@ -167,7 +170,7 @@ public class ClientPlayer implements Screen {
 
                 if(object instanceof  Network.RoundLost){
                     plAv = false;
-                    game.getFont().getData().setScale(3 * ratW, 3 * ratH);
+                    game.getFont().getData().setScale(1.5f * ratW, 1.5f * ratH);
                     joystick.setVisible(false);
                     PBReload.setVisible(false);
                     PBHPEnemy.setVisible(false);
@@ -176,7 +179,7 @@ public class ClientPlayer implements Screen {
                     EnemyHpLbl.setVisible(false);
                     shootButton.setVisible(false);
                     // retryBtn.setVisible(true);
-                    // mainMenuBtn.setVisible(true);
+                    mainMenuBtn.setVisible(true);
                     winLbl.setVisible(true);
                     winLbl.setText("You won, Good Job!");
                 }
@@ -196,7 +199,7 @@ public class ClientPlayer implements Screen {
                     player.hp = 100;
                     player.playerX = screenWidth / 2;
                     player.playerY = screenHeight / 2;
-                    game.getFont().getData().setScale(3 * ratW, 3 * ratH);
+                    game.getFont().getData().setScale(1.5f * ratW, 1.5f * ratH);
                 }
             }
 
@@ -346,7 +349,7 @@ public class ClientPlayer implements Screen {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 game.setScreen(new MainEventScreen(game));
-                dispose();
+                client.stop();
                 return false;
             }
         });
@@ -382,8 +385,8 @@ public class ClientPlayer implements Screen {
 
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                game.setScreen(new StartScreen(game));
-                dispose();
+                game.setScreen(new MainEventScreen(game));
+                client.stop();
                 return false;
             }
         });
@@ -391,6 +394,19 @@ public class ClientPlayer implements Screen {
         update = new Network.UpdatePlayer();
         updateB = new Network.BulletPositions();
         updateD = new Network.EnemyDamaged();
+        runUp = new Runnable() {
+            @Override
+            public void run() {
+                update.posX = player.playerX / screenWidth;
+                update.posY = player.playerY / screenHeight;
+                update.angle = player.angle;
+                update.hp = player.hp;
+                client.sendUDP(update);
+                updateB.bullets = plRatB;
+                client.sendUDP(updateB);
+            }
+        };
+        thrUp = new Thread(runUp);
         client.start();
         try {
             client.connect(5000, host, Network.portTCP, Network.portUDP);
@@ -495,13 +511,16 @@ public class ClientPlayer implements Screen {
                         r.getWidth(), r.getHeight(),1, 1, (float)Math.toDegrees(r.getAngle()));
             }
 
-            update.posX = player.playerX / screenWidth;
+            /*update.posX = player.playerX / screenWidth;
             update.posY = player.playerY / screenHeight;
             update.angle = player.angle;
             update.hp = player.hp;
             client.sendUDP(update);
             updateB.bullets = plRatB;
-            client.sendUDP(updateB);
+            client.sendUDP(updateB);*/
+            if(!thrUp.isAlive())
+                thrUp.run();
+
         }
         game.getBatch().end();
 

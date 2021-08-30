@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.MainScreen.StartScreen;
 
 public class FOG extends Game {
@@ -14,6 +15,7 @@ public class FOG extends Game {
 
     protected SpriteBatch batch;
     protected BitmapFont font;
+
     //Инициализация элементов
     @Override
     public void create() {
@@ -35,6 +37,11 @@ public class FOG extends Game {
     @Override
     public void render() {
         super.render();
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        super.resize(width, height);
     }
 
     @Override
